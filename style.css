@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+hr {
+    border-style: solid;
+    border-width: thin;
+    width: 500px;
+}
+
+#username {
+    width: 400px;
+}
+
+button {
+    border-radius: 15px;
+    border-style: none;
+    background-color: green;
+    color: white;
+    padding: 7px;
+}
+
+button:hover {
+    background-color:rgba(0, 128, 0, 0.815);
+}
