@@ -1,6 +1,8 @@
 import { containerDisplay, generate, usernameInput, gitHubUsername } from "./config.js";
 import { requestUserRepos } from "./model.js";
 
+
+
 // Listen to click event to generate html
 generate.addEventListener("click", function showData (e) {
 

@@ -2,7 +2,6 @@ import { clear } from "./helper.js";
 
 // username =  document.querySelector(".username").value;
 
-
 export function requestUserRepos(username) {
 
   if (!username) return;
@@ -34,9 +33,11 @@ export function requestUserRepos(username) {
 
   let html1 = `<br>
               <div class="TopDisplay">
-              <h1 class="usernameDisplay">${data1.name}</h1>
+              <h1 class="usernameDisplay"> ${data1.name}</h1>
               <p class="website"><b>website:</b></p><a href="${data1.blog}"> ${data1.blog}</a>
-              <p><b>bio:</b>${data1.bio}</p>
+              <p><b>bio:</b> ${data1.bio}</p>
+              <p><b>Location:</b> ${data1.location}</p>
+              <p><b>Public Repositories:</b> ${data1.public_repos}</p>
               <br>
               <hr>
               <br>
