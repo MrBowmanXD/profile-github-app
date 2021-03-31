@@ -1,7 +1,19 @@
+<<<<<<< HEAD
+=======
+import { clear } from "./helper.js";
+
+>>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
 // username =  document.querySelector(".username").value;
 
 export function requestUserRepos(username) {
 
+<<<<<<< HEAD
+=======
+  if (!username) return;
+
+  clear();
+
+>>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
   // Create a new XMLHttpRequest
   const xhr = new XMLHttpRequest();
 
@@ -267,7 +279,11 @@ export function requestUserRepos(username) {
                         </div>
                       `;
 
+<<<<<<< HEAD
                       containerDisplay.innerHTML += html5;
+=======
+                      containerLanguages.innerHTML = html5;
+>>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
                     }
 
 
@@ -291,7 +307,11 @@ export function requestUserRepos(username) {
                         </div>
                       `;
 
+<<<<<<< HEAD
                       containerDisplay.innerHTML += html4;
+=======
+                      containerLanguages.innerHTML = html4;
+>>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
 
                     }
 
