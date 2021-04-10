@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-=======
-import { clear } from "./helper.js";
-
->>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
 // username =  document.querySelector(".username").value;
 
 export function requestUserRepos(username) {
-
-<<<<<<< HEAD
-=======
   if (!username) return;
 
-  clear();
-
->>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
   // Create a new XMLHttpRequest
   const xhr = new XMLHttpRequest();
 
@@ -24,7 +13,6 @@ export function requestUserRepos(username) {
 
   const URL = `https://api.github.com/users/${username}`;
 
-
   // Open a new connection, using a GET request via URL endpoint
   // Providing 3 arguments (GET/POST, The URL, Async True/False)
   xhr.open("GET", url, true);
@@ -32,12 +20,9 @@ export function requestUserRepos(username) {
   request.open("GET", URL, true);
 
   request.onload = function() {
+    const data1 = JSON.parse(this.response);
 
-  const data1 = JSON.parse(this.response);
-
-
-
-  let html1 = `<br>
+    let html1 = `<br>
               <div class="TopDisplay">
               <h1 class="usernameDisplay"> ${data1.name}</h1>
               <p class="website"><b>website:</b></p><a href="${data1.blog}"> ${data1.blog}</a>
@@ -51,37 +36,33 @@ export function requestUserRepos(username) {
               </div>
           </div>`;
 
-          containerDisplay.innerHTML += html1;
+    containerDisplay.innerHTML += html1;
+  };
 
-      }
+  request.send();
 
-      request.send();
+  // When request is received
+  // Process it here
+  xhr.onload = function() {
+    // Parse API data into JSON
+    const data2 = JSON.parse(this.response);
 
-      // When request is received
-      // Process it here
-      xhr.onload = function() {
+    // Loop over each object in data array
+    for (let i in data2) {
+      const containerDisplay = document.querySelector(".containerDisplay");
 
-          // Parse API data into JSON
-          const data2 = JSON.parse(this.response);
+      // Create a new XMLHttpRequest
+      const requestLanguage = new XMLHttpRequest();
 
-          // Loop over each object in data array
-          for (let i in data2) {
+      // Github endpoint, dinamically passing in specified username
+      const URLLanguages = data2[i].languages_url;
 
-              const containerDisplay = document.querySelector(".containerDisplay");
+      // Open a new connection, using a GET request via URL endpoint
+      // Providing 3 arguments (GET/POST, The URL, Async True/False)
+      requestLanguage.open("GET", URLLanguages, true);
 
-
-              // Create a new XMLHttpRequest
-              const requestLanguage = new XMLHttpRequest();
-
-              // Github endpoint, dinamically passing in specified username
-              const URLLanguages = data2[i].languages_url;
-
-              // Open a new connection, using a GET request via URL endpoint
-              // Providing 3 arguments (GET/POST, The URL, Async True/False)
-              requestLanguage.open("GET", URLLanguages, true);
-
-              // Add html to container div
-              let html2 = `
+      // Add html to container div
+      let html2 = `
 
       <div class="repositories">
 
@@ -105,75 +86,84 @@ export function requestUserRepos(username) {
 
                   </div>`;
 
-              containerDisplay.innerHTML += html2;
+      containerDisplay.innerHTML += html2;
 
-               let repositoryName = data2[i].name;
+      let repositoryName = data2[i].name;
 
-               var lanArrayJavaScript = [];
+      var lanArrayJavaScript = [];
 
-               var lanArrayHTML = [];
+      var lanArrayHTML = [];
 
-               var lanArrayCSS = [];
+      var lanArrayCSS = [];
 
-               var lanArraySwift = [];
+      var lanArraySwift = [];
 
-               var lanArrayC = [];
+      var lanArrayC = [];
 
-               var lanArrayRuby = [];
+      var lanArrayRuby = [];
 
-               var lanArrayMakefile = [];
+      var lanArrayMakefile = [];
 
-               var lanArrayObjectiveC = [];
+      var lanArrayObjectiveC = [];
 
-              requestLanguage.onload = async function () {
+      requestLanguage.onload = async function() {
+        const containerEmpty = document.querySelector(".emptyContainer");
 
-                const containerEmpty = document.querySelector(".emptyContainer");
+        // const containerDisplay = document.querySelector(".containerDisplay");
 
-                // const containerDisplay = document.querySelector(".containerDisplay");
+        // Parse API data into JSON
+        const data3 = JSON.parse(this.response);
 
-                // Parse API data into JSON
-                const data3 = JSON.parse(this.response);
+        if (
+          data3.JavaScript !== undefined ||
+          isNaN(data3.JavaScript) !== true
+        ) {
+          lanArrayJavaScript.push(data3.JavaScript);
+        }
 
-                if (data3.JavaScript !== undefined || isNaN(data3.JavaScript) !== true) {
-                  lanArrayJavaScript.push(data3.JavaScript);
-                }
+        if (data3.HTML !== undefined || isNaN(data3.HTML) !== true) {
+          lanArrayHTML.push(data3.HTML);
+        }
 
-                if (data3.HTML !== undefined || isNaN(data3.HTML) !== true) {
-                  lanArrayHTML.push(data3.HTML);
-                }
+        if (data3.CSS !== undefined || isNaN(data3.CSS) !== true) {
+          lanArrayCSS.push(data3.CSS);
+        }
 
-                if (data3.CSS !== undefined || isNaN(data3.CSS) !== true) {
-                  lanArrayCSS.push(data3.CSS);
-                }
+        if (data3.Swift !== undefined || isNaN(data3.Swift) !== true) {
+          lanArraySwift.push(data3.Swift);
+        }
 
-                if (data3.Swift !== undefined || isNaN(data3.Swift) !== true) {
-                  lanArraySwift.push(data3.Swift);
-                }
+        if (data3.C !== undefined || isNaN(data3.C) !== true) {
+          lanArrayC.push(data3.C);
+        }
 
+        if (data3.Ruby !== undefined || isNaN(data3.Ruby) !== true) {
+          lanArrayRuby.push(data3.Ruby);
+        }
 
+        if (data3.Makefile !== undefined || isNaN(data3.Makefile) !== true) {
+          lanArrayMakefile.push(data3.Makefile);
+        }
 
-                if (data3.C !== undefined || isNaN(data3.C) !== true) {
-                  lanArrayC.push(data3.C);
-                }
+        if (
+          data3["Objective-C"] !== undefined ||
+          isNaN(data3["Objective-C"]) !== true
+        ) {
+          lanArrayObjectiveC.push(data3["Objective-C"]);
+        }
 
-                if (data3.Ruby !== undefined || isNaN(data3.Ruby) !== true) {
-                  lanArrayRuby.push(data3.Ruby);
-                }
-
-                if (data3.Makefile !== undefined || isNaN(data3.Makefile) !== true) {
-                  lanArrayMakefile.push(data3.Makefile);
-                }
-
-                if (data3["Objective-C"] !== undefined || isNaN(data3["Objective-C"]) !== true) {
-                  lanArrayObjectiveC.push(data3["Objective-C"]);
-                }
-
-                let html3 = `
+        let html3 = `
                     <div class="languages">
                         <h2 class="h2Languages">${repositoryName}</h2>
-                        <p>JavaScript:${data3.JavaScript}(${Math.round((data3.JavaScript/(data3.JavaScript + data3.HTML + data3.CSS))*100)}%)</p>
-                        <p>HTML:${data3.HTML}(${Math.round((data3.HTML/(data3.JavaScript + data3.HTML + data3.CSS))*100)}%)</p>
-                        <p>CSS:${data3.CSS}(${Math.round((data3.CSS/(data3.JavaScript + data3.HTML + data3.CSS))*100)}%)</p>
+                        <p>JavaScript:${data3.JavaScript}(${Math.round(
+          (data3.JavaScript / (data3.JavaScript + data3.HTML + data3.CSS)) * 100
+        )}%)</p>
+                        <p>HTML:${data3.HTML}(${Math.round(
+          (data3.HTML / (data3.JavaScript + data3.HTML + data3.CSS)) * 100
+        )}%)</p>
+                        <p>CSS:${data3.CSS}(${Math.round(
+          (data3.CSS / (data3.JavaScript + data3.HTML + data3.CSS)) * 100
+        )}%)</p>
                         <p>Swift:${data3.Swift}</p>
 
                         <p>C: ${data3.C}</p>
@@ -185,89 +175,197 @@ export function requestUserRepos(username) {
                         <hr>
                     </div>`;
 
-                    containerDisplay.innerHTML += html3;
+        containerDisplay.innerHTML += html3;
 
-                    var calculateJavaScript = 0;
+        var calculateJavaScript = 0;
 
-                    var calculateHTML = 0;
+        var calculateHTML = 0;
 
-                    var calculateCSS = 0;
+        var calculateCSS = 0;
 
-                    var calculateSwift = 0;
+        var calculateSwift = 0;
 
-                    var calculateC = 0;
+        var calculateC = 0;
 
-                    var calculateRuby = 0;
+        var calculateRuby = 0;
 
-                    var calculateMakefile = 0;
+        var calculateMakefile = 0;
 
-                    var calculateObjectiveC = 0;
+        var calculateObjectiveC = 0;
 
-                    var javaScriptLan = 0;
+        var javaScriptLan = 0;
 
-                    var htmlLan = 0;
+        var htmlLan = 0;
 
-                    var cssLan = 0;
+        var cssLan = 0;
 
-                    var swiftLan = 0;
+        var swiftLan = 0;
 
-                    var cLan = 0;
+        var cLan = 0;
 
-                    var rubyLan = 0;
+        var rubyLan = 0;
 
-                    var makefileLan = 0;
+        var makefileLan = 0;
 
-                    var objectiveCLan = 0;
+        var objectiveCLan = 0;
 
-                    for (let i = 0; i < lanArrayJavaScript.length; i++) {
-                      calculateJavaScript += lanArrayJavaScript[i];
+        for (let i = 0; i < lanArrayJavaScript.length; i++) {
+          calculateJavaScript += lanArrayJavaScript[i];
 
-                      calculateHTML += lanArrayHTML[i];
+          calculateHTML += lanArrayHTML[i];
 
-                      calculateCSS += lanArrayCSS[i];
+          calculateCSS += lanArrayCSS[i];
 
-                      calculateSwift += lanArraySwift[i];
+          calculateSwift += lanArraySwift[i];
 
-                      calculateC += lanArrayC[i];
+          calculateC += lanArrayC[i];
 
-                      calculateRuby += lanArrayRuby[i];
+          calculateRuby += lanArrayRuby[i];
 
-                      calculateMakefile += lanArrayMakefile[i];
+          calculateMakefile += lanArrayMakefile[i];
 
-                      calculateObjectiveC += lanArrayObjectiveC[i];
+          calculateObjectiveC += lanArrayObjectiveC[i];
+        }
 
-                    }
+        javaScriptLan =
+          Math.round(
+            (calculateJavaScript /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
+        htmlLan =
+          Math.round(
+            (calculateHTML /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
+        cssLan =
+          Math.round(
+            (calculateCSS /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    javaScriptLan = (Math.round((calculateJavaScript / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        swiftLan =
+          Math.round(
+            (calculateSwift /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    htmlLan = (Math.round((calculateHTML / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        cLan =
+          Math.round(
+            (calculateC /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    cssLan = (Math.round((calculateCSS / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        rubyLan =
+          Math.round(
+            (calculateRuby /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    swiftLan = (Math.round((calculateSwift / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        makefileLan =
+          Math.round(
+            (calculateMakefile /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    cLan = (Math.round((calculateC / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        objectiveCLan =
+          Math.round(
+            (calculateObjectiveC /
+              (calculateJavaScript +
+                calculateHTML +
+                calculateCSS +
+                calculateSwift +
+                calculateC +
+                calculateRuby +
+                calculateMakefile +
+                calculateObjectiveC)) *
+              100
+          ) + "%";
 
-                    rubyLan = (Math.round((calculateRuby / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        const containerLanguages = document.querySelector(
+          ".containerLanguages"
+        );
 
-                    makefileLan = (Math.round((calculateMakefile / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+        if (data3.JavaScript && data3.HTML && data3.CSS) {
+          let javaScriptLan2 =
+            Math.round(
+              (calculateJavaScript /
+                (calculateJavaScript + calculateHTML + calculateCSS)) *
+                100
+            ) + "%";
 
-                    objectiveCLan = (Math.round((calculateObjectiveC / (calculateJavaScript + calculateHTML + calculateCSS + calculateSwift + calculateC + calculateRuby + calculateMakefile + calculateObjectiveC)) * 100)) + "%";
+          let htmlLan2 =
+            Math.round(
+              (calculateHTML /
+                (calculateJavaScript + calculateHTML + calculateCSS)) *
+                100
+            ) + "%";
 
-                    const containerLanguages = document.querySelector(".containerLanguages");
+          let cssLan2 =
+            Math.round(
+              (calculateCSS /
+                (calculateJavaScript + calculateHTML + calculateCSS)) *
+                100
+            ) + "%";
 
-
-                    if (data3.JavaScript && data3.HTML && data3.CSS) {
-
-                      let javaScriptLan2 = (Math.round((calculateJavaScript / (calculateJavaScript + calculateHTML + calculateCSS)) * 100)) + "%";
-
-                      let htmlLan2 = (Math.round((calculateHTML / (calculateJavaScript + calculateHTML + calculateCSS)) * 100)) + "%";
-
-                      let cssLan2 = (Math.round((calculateCSS / (calculateJavaScript + calculateHTML + calculateCSS)) * 100)) + "%";
-
-                      let html5 = `
+          let html5 = `
                         <div class="total-languages">
                           <h2 class="total-languages">Total Languages</h2>
                           <p class="javaScript"><b>JavaScript:</b> ${javaScriptLan2} </p>
@@ -279,18 +377,11 @@ export function requestUserRepos(username) {
                         </div>
                       `;
 
-<<<<<<< HEAD
-                      containerDisplay.innerHTML += html5;
-=======
-                      containerLanguages.innerHTML = html5;
->>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
-                    }
+          containerDisplay.innerHTML += html5;
+        }
 
-
-
-                    if (data3.Swift) {
-
-                      let html4 = `
+        if (data3.Swift) {
+          let html4 = `
                         <div class="total-languages">
                           <h2 class="total-languages">Total Languages</h2>
                           <p class="javaScript"><b>JavaScript:</b> ${javaScriptLan} </p>
@@ -307,25 +398,14 @@ export function requestUserRepos(username) {
                         </div>
                       `;
 
-<<<<<<< HEAD
-                      containerDisplay.innerHTML += html4;
-=======
-                      containerLanguages.innerHTML = html4;
->>>>>>> 52f022274886cfe6645e31175d7d54253d4c3725
+          containerDisplay.innerHTML += html4;
+        }
+      };
 
-                    }
+      requestLanguage.send();
+    }
+  };
 
-
-
-              }
-
-              requestLanguage.send();
-          }
-
-      }
-
-      // Send the request to the server
-      xhr.send();
-
-
+  // Send the request to the server
+  xhr.send();
 }
