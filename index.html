@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="A app that creates a profile based on Github api">
-        <meta name="keywords" content="JavaScript, Github, profile, api">
-        <meta name="author" content="Manuel Gonçalves">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script defer type="module" src="./src/js/controller.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="A app that creates a profile based on Github api"
+    />
+    <meta name="keywords" content="JavaScript, Github, profile, api" />
+    <meta name="author" content="Manuel Gonçalves" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <script defer type="module" src="./src/js/controller.js"></script> -->
+    <!-- <script defer type="module" src="./js/script.js"></script> -->
+    <script defer type="module" src="./js/prototype.js"></script>
+    <title>Profile-github-app</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="run">
+        <div class="input-div center">
+          <input
+            id="username"
+            class="username"
+            type="text"
+            placeholder="Enter your Github username and click on generate"
+            autofocus
+          />
+        </div>
+        <button id="gen" class="btn generate hidden" type="submit">
+          <b>Generate</b>
+        </button>
+      </form>
+      <button class="btn generate__input"><b>Generate</b></button>
+    </div>
+    <div class="overlay hidden"></div>
+    <div id="containerDisplay" class="containerDisplay">
+      <!--
 
-        <title>Profile-github-app</title>
-    </head>
-    <body>
-       <div class="container">
-        <div class="header">
-            <h1>Profile github app</h1>
-        </div>
-        <hr>
-        <br>
-        <form class="run">
-            <input id="username" class="username" type="text" placeholder="Enter your Github username and click on generate" autofocus="">
-            <button id="gen" class="generate" type="submit">Generate</button>
-        </form>
-        <br>
-        <hr>
-        <footer class="footer">
-            <p>This project was made for personal use. Please feel free to utilize.</p>
-        </footer>
-        </div>
-        <div id="containerDisplay" class="containerDisplay">
-            <!--
             <div class="TopDisplay">
+                <div class="General__info">
                     <h1 class="usernameDisplay">Username</h1>
                     <p class="website">Website</p>
+                    <p><b>bio:</b>Bio</p>
+                    <p><b>Location:</b>Location</p>
+                    <p><b>Public Repositories:</b>Public Repositories</p>
                 <br>
                 <hr>
                 <br>
-            </div>
+                </div>
+
             <div class="repositories">
                 <h2 class="h2Repositories">Repositories</h2>
                     <p>name</p>
@@ -52,12 +71,14 @@
                 <p>Language (percentage%)</p>
                 <p>Language (percentage%)</p>
             </div>
-            -->
-        </div>
-        <br>
-        <button class="generate clear" type="button">Clear</button>
-    </body>
-    <!-- texture created by:
-    https://codepen.io/karaWhiteDragon/pen/zYGGMya
-     -->
+            </div>
+
+          -->
+
+      <button class="btn clear" type="button">Clear</button>
+    </div>
+    <br />
+
+    <footer class="footer"></footer>
+  </body>
 </html>
