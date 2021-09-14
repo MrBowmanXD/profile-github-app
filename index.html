@@ -28,7 +28,7 @@
         <div class="input-div center">
           <input
             id="username"
-            class="username"
+            class="username hidden"
             type="text"
             placeholder="Enter your Github username and click on generate"
             autofocus
@@ -38,7 +38,9 @@
           <b>Generate</b>
         </button>
       </form>
-      <button class="btn generate__input"><b>Generate</b></button>
+      <div class="center">
+        <button class="btn generate__input"><b>Generate</b></button>
+      </div>
     </div>
     <div class="overlay hidden"></div>
     <div id="containerDisplay" class="containerDisplay">
@@ -74,8 +76,11 @@
             </div>
 
           -->
-
-      <button class="btn clear" type="button">Clear</button>
+    </div>
+    <div class="center">
+      <button class="btn clear center hidden" type="button">
+        <b>Clear</b>
+      </button>
     </div>
     <br />
 

@@ -38,7 +38,6 @@ body {
 
 .username {
   position: relative;
-  display: none;
   z-index: 101;
   overflow: auto;
   width: auto;
@@ -47,10 +46,6 @@ body {
   padding: 15px 25px;
   width: 50%;
   border-radius: 50px;
-}
-
-.clear {
-  display: none;
 }
 
 .generate {
@@ -107,4 +102,8 @@ hr {
 
 p {
   font-family: "Nunito Sans", sans-serif;
+}
+
+.clear {
+  margin-top: 50px;
 }

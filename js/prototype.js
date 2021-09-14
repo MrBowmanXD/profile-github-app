@@ -4,7 +4,8 @@ const overlay = document.querySelector(".overlay");
 const container = document.querySelector(".container");
 const generate__input = document.querySelector(".generate__input");
 const containerDisplay = document.querySelector(".containerDisplay");
-
+const clear = document.querySelector(".clear");
+const TopDisplay = document.querySelector(".TopDisplay");
 const usernameInput = document.querySelector(".username");
 
 // let gitHubUsername = usernameInput.value;
@@ -41,7 +42,7 @@ function userDataGithub(username) {
 generate__input.addEventListener("click", function popUpInput(e) {
   e.preventDefault();
 
-  inputBox.style.display = "block";
+  inputBox.classList.remove("hidden");
 
   // popUp.style.display = "none";
 
@@ -63,7 +64,21 @@ popUp.addEventListener("click", function dataShowPlease(e) {
 
   popUp.classList.add("hidden");
 
+  clear.classList.remove("hidden");
+
   let gitHubUsername = usernameInput.value;
 
   userDataGithub(gitHubUsername);
+});
+
+clear.addEventListener("click", function clearPost(e) {
+  e.preventDefault();
+
+  usernameInput.value = "";
+
+  generate__input.classList.remove("hidden");
+
+  containerDisplay.innerHTML = "";
+
+  clear.classList.add("hidden");
 });
